@@ -5,6 +5,10 @@ get '/site/show/:id', to: 'site#show'
 
 get '/users/new', to:'users#new'
 post '/users', to: 'users#create'
+
+get '/users/login', to: 'sessions#new'
+post '/users', to: 'sessions#create'
+
 get "/users/:id/show", to: 'users#show'
 
 get '/users/:user_id/products/new', to: 'products#new'
