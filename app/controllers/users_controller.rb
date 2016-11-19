@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @user = User.find(session[:user_id])
+    @products =Product.all
+  end
   def new
     @new_user = User.new
   end
@@ -6,13 +10,15 @@ class UsersController < ApplicationController
     @new_user = User.new(
       :name=> params[:user][:name],
       :email => params[:user][:email])
-    @new_user.save
-    redirect_to "/users/#{@new_user.id}/show"
+    if @new_user.save
+      session[:user_id] = @new_user.id
+      redirect_to "/users/#{@new_user.id}/index"
+    else
+      render '/users/new'
+    end
   end
   def show
-    @user = User.find(params[:id])
-    @products = @user.products.all
-  end
-  def destroy
+    @user = User.find(session[:user_id])
+    @user_bids =Bid.where("user_id =?",session[:user_id])
   end
 end

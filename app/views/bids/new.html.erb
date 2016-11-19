@@ -1,0 +1,15 @@
+<h1>Make a bid &nbsp;<%= @user.name %></h1>
+<h2>
+<%= form_tag("/users/#{@user.id}/products/#{@product.id}/bids", method: "post") do %>
+  <%= label_tag(:amount, 'Make your bid')%>
+  <%= number_field(:bid, :amount)%>
+  <%= label_tag(:email, 'Your mail')%>
+  <%= email_field(:user, :email)%>
+  <%= hidden_field_tag(:product_id, @product.id)%>
+  <%= submit_tag("Save")%>
+  <br>
+  <br>
+<% end %>
+<br>
+
+<%= link_to "Back to your product page", "/users/:id/show"%>

@@ -1,0 +1,21 @@
+<h1>Product Page</h1>
+<h2><%=@product.title%></h2>
+<ul>
+  <li>Description: &nbsp; <%= @product.description %></li>
+  <li>Deadline: &nbsp;<%= @product.deadline %></li>
+</ul>
+<h2>Bids</h2>
+<ul>
+  <% @bids.each do |bid| %>
+    <li>
+      Bid number: &nbsp;<%=bid.id%>&nbsp;
+      Amount: &nbsp; <%= bid.amount %> &nbsp;
+      User: &nbsp; <%=User.find(bid.user_id).name%>&nbsp;
+    </li>
+  <%end%>
+</ul>
+
+<br>
+
+<%= link_to "Make a new bid", "/users/#{@user.id}/products/#{@product.id}/bids/new" %>&nbsp;&nbsp;
+<%= link_to "Back to the Product Index", "/users/#{@user.id}/index"%>

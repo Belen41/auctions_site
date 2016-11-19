@@ -1,0 +1,17 @@
+<h1>Auction Site</h1>
+
+<h2>Products</h2>
+<ul>
+  <% @products.each do |product| %>
+  <li>
+    <a href= "/users/:user_id/products/product.id/show"><%=product.title%></a>
+  </li>
+  <% end %>
+</ul>
+<br>
+<br>
+
+
+<%=link_to "New User", '/users/new' %>
+
+<%=link_to "Login", '/users/login'%>
