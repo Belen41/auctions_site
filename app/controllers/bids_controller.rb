@@ -11,7 +11,10 @@ class BidsController < ApplicationController
     :amount=> params[:bid][:amount],
     :user_id=> params[:user_id],
     :product_id=>params[:product_id])
-    @user_bid.save
-    redirect_to "/users/#{params[:user_id]}/show"
+      if @user_bid.save
+          redirect_to "/users/#{params[:user_id]}/show"
+      else
+        render 'new'
+      end
   end
 end

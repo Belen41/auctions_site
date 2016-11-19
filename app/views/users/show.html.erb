@@ -1,5 +1,6 @@
 <h1>Your Product Page</h1>
 <h2><%= @user.name %></h2>
+<h3>Your Bids</h3>
 <ul>
   <% @user_bids.each do |bid| %>
     <li>
@@ -9,7 +10,19 @@
     </li>
   <% end %>
 </ul>
+<h3>Your Posts</h3>
+<ul>
+  <%@products.each do |product|%>
+    <li>
+      Product: <%=product.title%>&nbsp;&nbsp;
+      Description: <%=product.description%>&nbsp;&nbsp;
+      Deadline: <%=product.deadline%>&nbsp;&nbsp;
+    </li>
+  <%end%>
+</ul>
 <br>
+<br>
+<h3>Bids Won</h3>
 <br>
 <br>
 <%=link_to "Back to the product index", "/users/#{@user.id}/index"%>

@@ -20,5 +20,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @user_bids =Bid.where("user_id =?",session[:user_id])
+    @products=@user.products.all
   end
 end
